@@ -40,12 +40,12 @@ for index, col_n in enumerate(df.columns):
     percentage = num_uniq/df.shape[0]*100
     print('{0:3d} {1:4d} {2:8.3f}'.format(index, num_uniq, percentage))
 
-# from sklearn.feature_selection import VarianceThreshold
-# import seaborn as sns 
-# import matplotlib.pyplot as plt
-# print(sns.__version__)
-# sns.pairplot(df)
-# plt.show()
+from sklearn.feature_selection import VarianceThreshold
+import seaborn as sns 
+import matplotlib.pyplot as plt
+print(sns.__version__)
+sns.pairplot(df)
+plt.show()
 
 #get correlations of each features in dataset
 # corrmat = df.corr()
@@ -95,7 +95,7 @@ random_grid = {'n_estimators': n_estimators,
                 'min_samples_leaf': min_samples_leaf }
 
 print(random_grid)
-rf = RandomForestRegressor()
-rf_random = RandomizedSearchCV(estimator =rf, param_distributions = random_grid,
-scoring = 'neg_mean_squared_error', n_iter = 10, cv = 5, verbose = 2, random_state = 42, n_jobs =1)
-rf_random.fit(X_train, y_train)
+# rf = RandomForestRegressor()
+# rf_random = RandomizedSearchCV(estimator =rf, param_distributions = random_grid,
+# scoring = 'neg_mean_squared_error', n_iter = 10, cv = 5, verbose = 2, random_state = 42, n_jobs =1)
+# rf_random.fit(X_train, y_train)
