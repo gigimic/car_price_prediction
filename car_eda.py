@@ -40,7 +40,7 @@ for index, col_n in enumerate(df.columns):
     percentage = num_uniq/df.shape[0]*100
     print('{0:3d} {1:4d} {2:8.3f}'.format(index, num_uniq, percentage))
 
-from sklearn.feature_selection import VarianceThreshold
+# from sklearn.feature_selection import VarianceThreshold
 import seaborn as sns 
 import matplotlib
 # %matplotlib inline
@@ -48,9 +48,9 @@ import matplotlib.pyplot as plt
 
 
 # matplotlib.use('Agg')
-# print(sns.__version__)
-# sns.pairplot(df)
-# plt.show()
+print(sns.__version__)
+sns.pairplot(df)
+plt.show()
 
 #get correlations of each features in dataset
 # corrmat = df.corr()
@@ -99,28 +99,28 @@ random_grid = {'n_estimators': n_estimators,
                 'min_samples_split': min_samples_split,
                 'min_samples_leaf': min_samples_leaf }
 
-print(random_grid)
-rf = RandomForestRegressor()
-rf_random = RandomizedSearchCV(estimator =rf, param_distributions = random_grid,
-scoring = 'neg_mean_squared_error', n_iter = 10, cv = 5, verbose = 2, random_state = 42, n_jobs =1)
-rf_random.fit(X_train, y_train)
+# print(random_grid)
+# rf = RandomForestRegressor()
+# rf_random = RandomizedSearchCV(estimator =rf, param_distributions = random_grid,
+# scoring = 'neg_mean_squared_error', n_iter = 10, cv = 5, verbose = 2, random_state = 42, n_jobs =1)
+# rf_random.fit(X_train, y_train)
 
-print(rf_random.best_params_)
-print(rf_random.best_score_)
-predictions=rf_random.predict(X_test)
+# print(rf_random.best_params_)
+# print(rf_random.best_score_)
+# predictions=rf_random.predict(X_test)
 
 # sns.distplot(predictions)
 # plt.show()
 
 
-from sklearn import metrics
-print('MAE:', metrics.mean_absolute_error(y_test, predictions))
-print('MSE:', metrics.mean_squared_error(y_test, predictions))
-print('RMSE:', np.sqrt(metrics.mean_squared_error(y_test, predictions)))
+# from sklearn import metrics
+# print('MAE:', metrics.mean_absolute_error(y_test, predictions))
+# print('MSE:', metrics.mean_squared_error(y_test, predictions))
+# print('RMSE:', np.sqrt(metrics.mean_squared_error(y_test, predictions)))
 
-import pickle
-# open a file, where you want to store the data
-file = open('random_forest_regression_model.pkl', 'wb')
+# import pickle
+# # open a file, where you want to store the data
+# file = open('random_forest_regression_model.pkl', 'wb')
 
-# dump information to that file
-pickle.dump(rf_random, file)
+# # dump information to that file
+# pickle.dump(rf_random, file)
